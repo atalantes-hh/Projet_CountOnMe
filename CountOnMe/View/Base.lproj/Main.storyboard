@@ -5,7 +5,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -48,34 +47,40 @@
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="63"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Raa-av-x4n">
-                                                <rect key="frame" x="0.0" y="0.0" width="166.5" height="63"/>
-                                                <color key="backgroundColor" red="0.94900184870000004" green="0.94900757069999997" blue="0.94902199509999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="78.5" height="63"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                                <state key="normal" title="AC">
+                                                <state key="normal" title="AC" backgroundImage="Number Button">
                                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="tappedAllClear:" destination="eqK-jh-KKu" eventType="touchUpInside" id="EUC-H7-jjD"/>
                                                 </connections>
                                             </button>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="CmV-OV-OHj">
-                                                <rect key="frame" x="176.5" y="0.0" width="166.5" height="63"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tMJ-tH-k5u" userLabel="Correction">
+                                                <rect key="frame" x="88.5" y="0.0" width="78" height="63"/>
+                                                <state key="normal" title="Clear" backgroundImage="Number Button">
+                                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="correction:" destination="eqK-jh-KKu" eventType="touchUpInside" id="Tnj-Q0-drZ"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y7y-A4-fcR" userLabel="Keep">
+                                                <rect key="frame" x="176.5" y="0.0" width="78.5" height="63"/>
+                                                <state key="normal" title="Keep" backgroundImage="Keep Button">
+                                                    <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="tappedKeep:" destination="eqK-jh-KKu" eventType="touchUpInside" id="w8y-rs-PXI"/>
+                                                </connections>
+                                            </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="CmV-OV-OHj">
+                                                <rect key="frame" x="265" y="0.0" width="78" height="63"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tMJ-tH-k5u" userLabel="Correction">
-                                                        <rect key="frame" x="0.0" y="0.0" width="78.5" height="63"/>
-                                                        <color key="backgroundColor" red="0.94900184870000004" green="0.94900757069999997" blue="0.94902199509999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                        <state key="normal" title="Clear">
-                                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="correction:" destination="eqK-jh-KKu" eventType="touchUpInside" id="Tnj-Q0-drZ"/>
-                                                        </connections>
-                                                    </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W04-n1-Wen">
-                                                        <rect key="frame" x="88.5" y="0.0" width="78" height="63"/>
-                                                        <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="78" height="63"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="42"/>
-                                                        <state key="normal" title="/">
+                                                        <state key="normal" title="÷" backgroundImage="Divide Button">
                                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <connections>
@@ -91,9 +96,8 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jd7-ld-hSU">
                                                 <rect key="frame" x="0.0" y="0.0" width="78.5" height="63"/>
-                                                <color key="backgroundColor" red="0.94900184870000004" green="0.94900757069999997" blue="0.94902199509999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                                <state key="normal" title="7">
+                                                <state key="normal" title="7" backgroundImage="Number Button">
                                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
@@ -102,9 +106,8 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lad-SR-mqj">
                                                 <rect key="frame" x="88.5" y="0.0" width="78" height="63"/>
-                                                <color key="backgroundColor" red="0.94900184870000004" green="0.94900757069999997" blue="0.94902199509999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                                <state key="normal" title="8">
+                                                <state key="normal" title="8" backgroundImage="Number Button">
                                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
@@ -113,9 +116,8 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EPx-3X-zTa">
                                                 <rect key="frame" x="176.5" y="0.0" width="78.5" height="63"/>
-                                                <color key="backgroundColor" red="0.94900184870000004" green="0.94900757069999997" blue="0.94902199509999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                                <state key="normal" title="9">
+                                                <state key="normal" title="9" backgroundImage="Number Button">
                                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
@@ -124,9 +126,8 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YD6-ul-r3f">
                                                 <rect key="frame" x="265" y="0.0" width="78" height="63"/>
-                                                <color key="backgroundColor" systemColor="systemBlueColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="42"/>
-                                                <state key="normal" title="x">
+                                                <state key="normal" title="x" backgroundImage="Multiply Button">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
@@ -140,9 +141,8 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UDN-zf-T0y">
                                                 <rect key="frame" x="0.0" y="0.0" width="78.5" height="63"/>
-                                                <color key="backgroundColor" red="0.94900184870000004" green="0.94900757069999997" blue="0.94902199509999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                                <state key="normal" title="4">
+                                                <state key="normal" title="4" backgroundImage="Number Button">
                                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
@@ -151,9 +151,8 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w0P-xH-zGO">
                                                 <rect key="frame" x="88.5" y="0.0" width="78" height="63"/>
-                                                <color key="backgroundColor" red="0.94900184870000004" green="0.94900757069999997" blue="0.94902199509999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                                <state key="normal" title="5">
+                                                <state key="normal" title="5" backgroundImage="Number Button">
                                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
@@ -162,9 +161,8 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S66-ub-JAX">
                                                 <rect key="frame" x="176.5" y="0.0" width="78.5" height="63"/>
-                                                <color key="backgroundColor" red="0.94900184870000004" green="0.94900757069999997" blue="0.94902199509999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                                <state key="normal" title="6">
+                                                <state key="normal" title="6" backgroundImage="Number Button">
                                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
@@ -173,9 +171,8 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hkr-13-i1X">
                                                 <rect key="frame" x="265" y="0.0" width="78" height="63"/>
-                                                <color key="backgroundColor" red="0.87450981139999995" green="0.37254902719999999" blue="0.32549020649999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="42"/>
-                                                <state key="normal" title="-">
+                                                <state key="normal" title="-" backgroundImage="Substract Button">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
@@ -189,9 +186,8 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pLI-Ao-Ph3">
                                                 <rect key="frame" x="0.0" y="0.0" width="78.5" height="63"/>
-                                                <color key="backgroundColor" red="0.94900184870000004" green="0.94900757069999997" blue="0.94902199509999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                                <state key="normal" title="1">
+                                                <state key="normal" title="1" backgroundImage="Number Button">
                                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
@@ -200,9 +196,8 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4VK-5l-AYm">
                                                 <rect key="frame" x="88.5" y="0.0" width="78" height="63"/>
-                                                <color key="backgroundColor" red="0.94900184870000004" green="0.94900757069999997" blue="0.94902199509999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                                <state key="normal" title="2">
+                                                <state key="normal" title="2" backgroundImage="Number Button">
                                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
@@ -211,9 +206,8 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y9P-eR-urU">
                                                 <rect key="frame" x="176.5" y="0.0" width="78.5" height="63"/>
-                                                <color key="backgroundColor" red="0.94900184870000004" green="0.94900757069999997" blue="0.94902199509999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                                <state key="normal" title="3">
+                                                <state key="normal" title="3" backgroundImage="Number Button">
                                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
@@ -222,9 +216,8 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z5q-JB-gew">
                                                 <rect key="frame" x="265" y="0.0" width="78" height="63"/>
-                                                <color key="backgroundColor" red="0.38823530080000002" green="0.72156864399999998" blue="0.61960786580000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="42"/>
-                                                <state key="normal" title="+">
+                                                <state key="normal" title="+" backgroundImage="Addition Button">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
@@ -238,9 +231,8 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DQU-P5-55X">
                                                 <rect key="frame" x="0.0" y="0.0" width="166.5" height="63"/>
-                                                <color key="backgroundColor" red="0.94900184870000004" green="0.94900757069999997" blue="0.94902199509999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="29"/>
-                                                <state key="normal" title="0">
+                                                <state key="normal" title="0" backgroundImage="Large Button">
                                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
@@ -252,9 +244,8 @@
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3zr-HC-0N9">
                                                         <rect key="frame" x="0.0" y="0.0" width="78.5" height="63"/>
-                                                        <color key="backgroundColor" systemColor="systemGray2Color"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="42"/>
-                                                        <state key="normal" title=".">
+                                                        <state key="normal" title="." backgroundImage="Decimal Button">
                                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <connections>
@@ -357,7 +348,6 @@
                     <connections>
                         <outlet property="textView" destination="T2H-yn-nBB" id="yqe-Yo-Sag"/>
                         <outletCollection property="calculaterButtons" destination="Raa-av-x4n" collectionClass="NSMutableArray" id="Cka-yS-9Lb"/>
-                        <outletCollection property="calculaterButtons" destination="tMJ-tH-k5u" collectionClass="NSMutableArray" id="xVZ-6w-26l"/>
                         <outletCollection property="calculaterButtons" destination="W04-n1-Wen" collectionClass="NSMutableArray" id="tzU-22-Yh7"/>
                         <outletCollection property="calculaterButtons" destination="YD6-ul-r3f" collectionClass="NSMutableArray" id="VhC-lc-sp6"/>
                         <outletCollection property="calculaterButtons" destination="EPx-3X-zTa" collectionClass="NSMutableArray" id="j0v-fu-vdH"/>
@@ -374,6 +364,7 @@
                         <outletCollection property="calculaterButtons" destination="qMj-Of-bCU" collectionClass="NSMutableArray" id="JW5-0e-ZOE"/>
                         <outletCollection property="calculaterButtons" destination="3zr-HC-0N9" collectionClass="NSMutableArray" id="pZ6-IV-yvx"/>
                         <outletCollection property="calculaterButtons" destination="DQU-P5-55X" collectionClass="NSMutableArray" id="0Lc-LB-JiY"/>
+                        <outletCollection property="calculaterButtons" destination="tMJ-tH-k5u" collectionClass="NSMutableArray" id="xVZ-6w-26l"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7XP-3c-sJZ" sceneMemberID="firstResponder"/>
@@ -382,14 +373,13 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemGray2Color">
-            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemYellowColor">
-            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
+        <image name="Addition Button" width="39" height="31.5"/>
+        <image name="Decimal Button" width="39" height="31.5"/>
+        <image name="Divide Button" width="39" height="31.5"/>
+        <image name="Keep Button" width="39" height="31.5"/>
+        <image name="Large Button" width="83" height="31.5"/>
+        <image name="Multiply Button" width="39" height="31.5"/>
+        <image name="Number Button" width="39" height="31.5"/>
+        <image name="Substract Button" width="39" height="31.5"/>
     </resources>
 </document>

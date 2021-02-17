@@ -23,9 +23,12 @@ class ViewController: UIViewController {
     
     // Reset calculator
     @IBAction func tappedAllClear(_ sender: UIButton) {
-        calculator.clearCalculation()
+        calculator.reset()
     }
     
+    @IBAction func tappedKeep(_ sender: UIButton) {
+        calculator.keepResult()
+    }
     // Remove Last element
     @IBAction func correction(_ sender: UIButton) {
         calculator.correction()
@@ -39,8 +42,7 @@ class ViewController: UIViewController {
     
     @IBAction func tappedDecimalMode(_ sender: UIButton) {
         guard let floatNumber = sender.title(for: .normal) else { return }
-
-        calculator.decimal(floatNumber)
+        calculator.isDecimal(floatNumber)
     }
     
     // Append new number
@@ -57,6 +59,7 @@ class ViewController: UIViewController {
     // View Life cycles
     override func viewDidLoad() {
         super.viewDidLoad()
+        textView.layer.cornerRadius = 6
         calculator.delegate = self
         // Do any additional setup after loading the view.
     }
@@ -65,6 +68,7 @@ class ViewController: UIViewController {
 extension ViewController: CalculatorDelegate {
     func updateDisplay(_ calculInProgress: String) {
         textView.text = calculInProgress
+        textView.layer.cornerRadius = 6
     }
     
     func showAlertPopUp(title: String, message: String) {
