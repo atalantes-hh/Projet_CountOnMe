@@ -26,9 +26,11 @@ class ViewController: UIViewController {
         calculator.reset()
     }
     
+    // Keep result
     @IBAction func tappedKeep(_ sender: UIButton) {
         calculator.keepResult()
     }
+    
     // Remove Last element
     @IBAction func correction(_ sender: UIButton) {
         calculator.correction()
@@ -37,21 +39,21 @@ class ViewController: UIViewController {
     // Append operator to expression
     @IBAction func tappedOperators(_ sender: UIButton) {
         guard let operandChoice = sender.title(for: .normal) else { return }
-        calculator.operand(operandChoice)
+        calculator.appendOperand(operandChoice)
     }
     
+    // Append decimal to expression
     @IBAction func tappedDecimalMode(_ sender: UIButton) {
-        guard let floatNumber = sender.title(for: .normal) else { return }
-        calculator.isDecimal(floatNumber)
+        calculator.isDecimal()
     }
     
-    // Append new number
+    // Append new number to expression
     @IBAction func tappedNumberButton(_ sender: UIButton) {
         guard let numberText = sender.title(for: .normal) else { return }
         calculator.appendSelectedNumber(numberText)
     }
     
-    // When result ask
+    // When ask for a result
     @IBAction func tappedEqualButton(_ sender: UIButton) {
         calculator.makeOperation()
     }
@@ -61,9 +63,12 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         textView.layer.cornerRadius = 6
         calculator.delegate = self
+        textView.text = calculator.calculInProgress
         // Do any additional setup after loading the view.
     }
 }
+
+// MARK: - Extensions
 
 extension ViewController: CalculatorDelegate {
     func updateDisplay(_ calculInProgress: String) {
