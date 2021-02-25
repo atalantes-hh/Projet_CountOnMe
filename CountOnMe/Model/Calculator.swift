@@ -19,7 +19,7 @@ protocol CalculatorDelegate: class {
 final class Calculator {
     
     // MARK: - Enumerations
-    // Print error message when operations errors
+    // Display error message when operations errors
     enum ErrorCase {
         case operationImpossible, operationHaveResult, wrongOperator, divideByZero, decimalExist, keeping, syntax
         var title: String {
@@ -51,7 +51,7 @@ final class Calculator {
     weak var delegate: CalculatorDelegate?
     
     // Display operation on screen
-    var calculInProgress: String = "" {
+    var calculInProgress: String = "0" {
         didSet {
             delegate?.updateDisplay(calculInProgress)
         }
@@ -64,7 +64,7 @@ final class Calculator {
     
     // Check is first element is a number
     private var firstValue: Bool {
-        if operation.count < 1 {
+        if calculInProgress == "0" || calculInProgress == "" {
             return operation.first != "+" && operation.first != "-" &&
                 operation.first != "÷" && operation.first != "x"
         }
@@ -81,6 +81,11 @@ final class Calculator {
     private var expressionHaveEnoughElement: Bool {
         guard operationHaveResult == false else { return true }
         return operation.count >= 3
+    }
+    
+    // Check last element is not a Decimal
+    private var lastElementDecimal: Bool {
+        return operation.last?.last != "."
     }
     
     // Operation have a result
@@ -103,7 +108,12 @@ final class Calculator {
     // Adding number to the operation
     func appendSelectedNumber(_ numberText: String) {
         guard !operationHaveResult else { return errorMessage(alert: .operationHaveResult) }
-        calculInProgress.append(numberText)
+        if calculInProgress == "0" {
+            calculInProgress.removeLast()
+            calculInProgress.append(numberText)
+        } else {
+            calculInProgress.append(numberText)
+        }
     }
     
     // Adding decimal to the operation
@@ -119,7 +129,7 @@ final class Calculator {
     func appendOperand(_ operandChoice: String) {
         guard !operationHaveResult else { return errorMessage(alert: .operationHaveResult) }
         guard !firstValue else { return errorMessage(alert: .operationImpossible) }
-        guard operation.last?.last != "." else { return errorMessage(alert: .syntax) }
+        guard lastElementDecimal else { return errorMessage(alert: .syntax) }
         if canAddOperator {
             switch operandChoice {
             case "+":
@@ -150,7 +160,7 @@ final class Calculator {
     // Remove all elements
     func reset() {
         calculInProgress.removeAll()
-        delegate?.updateDisplay("")
+        delegate?.updateDisplay("0")
     }
     
     // To keep last result for an other operation
@@ -164,7 +174,7 @@ final class Calculator {
         guard expressionHaveEnoughElement else { return errorMessage(alert: .operationImpossible) }
         guard canAddOperator, !operationHaveResult else { return errorMessage(alert: .operationHaveResult) }
         guard !divideByZero else { return errorMessage(alert: .divideByZero) }
-        guard operation.last?.last != "." else { return errorMessage(alert: .syntax) }
+        guard lastElementDecimal else { return errorMessage(alert: .syntax) }
         
         var operationsToReduce = operation
         let priorityOperators = ["x", "÷"]
@@ -185,19 +195,19 @@ final class Calculator {
                     currentIndex = operatorActiveClassic
                 }
             }
-            
+        
             // Execute method to make calculation by verify index
             if let index = currentIndex {
                 let operand = operationsToReduce[index]
-                let onLeft = Double(operationsToReduce[index - 1])
-                let onRight = Double(operationsToReduce[index + 1])
-                result = formatDecimal(number: calculate(leftNumber: onLeft!, operand: operand, rightNumber: onRight!))
+                guard let onLeft = Double(operationsToReduce[index - 1]) else { return }
+                guard let onRight = Double(operationsToReduce[index + 1]) else { return }
+                result = formatDecimal(number: calculate(leftNumber: onLeft, operand: operand, rightNumber: onRight))
                 operationsToReduce[index] = result
                 operationsToReduce.remove(at: index + 1)
                 operationsToReduce.remove(at: index - 1)
                 calculInProgress.removeAll()
             }
-            calculInProgress.append(" = \(operationsToReduce.last!)")
+            calculInProgress.append(" = \(operationsToReduce[0])")
         }
     }
     

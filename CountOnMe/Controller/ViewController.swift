@@ -8,63 +8,57 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
     
     // MARK: - @IBOUtlet
     
-    @IBOutlet weak var textView: UITextView!
+    @IBOutlet private weak var textView: UITextView!
     @IBOutlet var calculaterButtons: [UIButton]!
     
     // MARK: - Private Property
     
     private var calculator = Calculator()
     
+    // MARK: - View Life cycles
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        calculator.delegate = self
+        
+        textView.layer.cornerRadius = 6
+        textView.text = calculator.calculInProgress
+    }
+    
     // MARK: - @IBAction
     
-    // Reset calculator
-    @IBAction func tappedAllClear(_ sender: UIButton) {
+    @IBAction private func tappedAllClearButton(_ sender: UIButton) {
         calculator.reset()
     }
     
-    // Keep result
-    @IBAction func tappedKeep(_ sender: UIButton) {
-        calculator.keepResult()
-    }
-    
-    // Remove Last element
-    @IBAction func correction(_ sender: UIButton) {
+    @IBAction private func tappedCorrectionButton(_ sender: UIButton) {
         calculator.correction()
     }
     
-    // Append operator to expression
-    @IBAction func tappedOperators(_ sender: UIButton) {
-        guard let operandChoice = sender.title(for: .normal) else { return }
-        calculator.appendOperand(operandChoice)
+    @IBAction private func tappedKeepButton(_ sender: UIButton) {
+        calculator.keepResult()
     }
     
-    // Append decimal to expression
-    @IBAction func tappedDecimalMode(_ sender: UIButton) {
-        calculator.isDecimal()
-    }
-    
-    // Append new number to expression
-    @IBAction func tappedNumberButton(_ sender: UIButton) {
+    @IBAction private func tappedNumberButton(_ sender: UIButton) {
         guard let numberText = sender.title(for: .normal) else { return }
         calculator.appendSelectedNumber(numberText)
     }
     
-    // When ask for a result
-    @IBAction func tappedEqualButton(_ sender: UIButton) {
-        calculator.makeOperation()
+    @IBAction private func tappedDecimalButton(_ sender: UIButton) {
+        calculator.isDecimal()
     }
     
-    // View Life cycles
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        textView.layer.cornerRadius = 6
-        calculator.delegate = self
-        textView.text = calculator.calculInProgress
-        // Do any additional setup after loading the view.
+    @IBAction private func tappedOperatorsButton(_ sender: UIButton) {
+        guard let operandChoice = sender.title(for: .normal) else { return }
+        calculator.appendOperand(operandChoice)
+    }
+    
+    @IBAction private func tappedEqualButton(_ sender: UIButton) {
+        calculator.makeOperation()
     }
 }
 

@@ -108,22 +108,22 @@ final class CalculatorTests: XCTestCase {
         calculator.appendSelectedNumber("2 + ")
         calculator.makeOperation()
         XCTAssertEqual(calculator.calculInProgress, "2 + ")
-        XCTAssertEqual(calculatorDelegateMock.testAlertTitle, "Error")
-        XCTAssertEqual(calculatorDelegateMock.testAlertMessage, "This operation is impossible")
+        XCTAssertEqual(calculatorDelegateMock.testAlertTitle, Calculator.ErrorCase.operationImpossible.title)
+        XCTAssertEqual(calculatorDelegateMock.testAlertMessage, Calculator.ErrorCase.operationImpossible.message)
     }
     
     // Alert Division by 0
     func testGivenAlertMessage_WhenLastElementsAreDivideandZero_ThenResultSouldBeDisplayAlertMessage() {
         calculator.calculInProgress = "5 ÷ 0"
         calculator.makeOperation()
-        XCTAssertEqual(calculatorDelegateMock.testAlertMessage, "You try to divide by 0. This operation is impossible")
+        XCTAssertEqual(calculatorDelegateMock.testAlertMessage, Calculator.ErrorCase.divideByZero.message)
     }
     
     // Alert can't add 2 Operators
     func testGivenAlertMessage_WhenAlreadyHaveAnOperand_ThenResultSouldBeAlertMessage() {
         calculator.calculInProgress = "5 + "
         calculator.appendOperand("+")
-        XCTAssertEqual(calculatorDelegateMock.testAlertMessage, "An operand already exist !")
+        XCTAssertEqual(calculatorDelegateMock.testAlertMessage, Calculator.ErrorCase.wrongOperator.message)
     }
     
     // Alert Double Decimal
@@ -131,7 +131,7 @@ final class CalculatorTests: XCTestCase {
         calculator.calculInProgress = "5 + 3"
         calculator.isDecimal()
         calculator.isDecimal()
-        XCTAssertEqual(calculatorDelegateMock.testAlertMessage, "A decimal was already added to the operation")
+        XCTAssertEqual(calculatorDelegateMock.testAlertMessage, Calculator.ErrorCase.decimalExist.message)
     }
     
     // Alert Double Equal
@@ -142,8 +142,7 @@ final class CalculatorTests: XCTestCase {
         calculator.makeOperation()
         XCTAssertEqual(calculator.calculInProgress, " = 5")
         calculator.makeOperation()
-        XCTAssertEqual(calculatorDelegateMock.testAlertMessage,
-                       "This operation have a result. Press K to Keep last result or AC to clear")
+        XCTAssertEqual(calculatorDelegateMock.testAlertMessage, Calculator.ErrorCase.operationHaveResult.message)
     }
     
     // Alert Correction After Result
@@ -151,15 +150,14 @@ final class CalculatorTests: XCTestCase {
         calculator.calculInProgress = "5 + 23"
         calculator.makeOperation()
         calculator.correction()
-        XCTAssertEqual(calculatorDelegateMock.testAlertMessage,
-                       "This operation have a result. Press K to Keep last result or AC to clear")
+        XCTAssertEqual(calculatorDelegateMock.testAlertMessage, Calculator.ErrorCase.operationHaveResult.message)
     }
     
     // Alert Error Syntax
     func testGivenAlertMessage_WhenAppendPlusAfterDecimal_ThenResultShouldBeAlert() {
         calculator.calculInProgress = "3."
         calculator.appendOperand("+")
-        XCTAssertEqual(calculatorDelegateMock.testAlertMessage, "Syntax error, you need to correct the operation")
+        XCTAssertEqual(calculatorDelegateMock.testAlertMessage, Calculator.ErrorCase.syntax.message)
     }
     
     // Alert Adding Operand Last
@@ -167,34 +165,34 @@ final class CalculatorTests: XCTestCase {
         calculator.calculInProgress = "5 + 3"
         calculator.makeOperation()
         calculator.appendOperand("-")
-        XCTAssertEqual(calculatorDelegateMock.testAlertMessage,
-                       "This operation have a result. Press K to Keep last result or AC to clear")
+        XCTAssertEqual(calculatorDelegateMock.testAlertMessage, Calculator.ErrorCase.operationHaveResult.message)
     }
     
     // Alert Adding Operand First
     func testGivenAlertMessage_WhenStartWithOperand_ThenResultSouldBeAlert() {
         calculator.appendOperand("+")
-        XCTAssertEqual(calculatorDelegateMock.testAlertMessage, "This operation is impossible")
+        XCTAssertEqual(calculatorDelegateMock.testAlertMessage, Calculator.ErrorCase.operationImpossible.message)
     }
     
     // Alert Adding Decimal First
     func testGivenAlertMessage_WhenStartWithDecimal_ThenResultSouldBeAlert() {
+        calculator.calculInProgress = ""
         calculator.isDecimal()
-        XCTAssertEqual(calculatorDelegateMock.testAlertMessage, "Syntax error, you need to correct the operation")
+        XCTAssertEqual(calculatorDelegateMock.testAlertMessage, Calculator.ErrorCase.syntax.message)
     }
     
     // Alert Adding Decimal After Operand
     func testGivenAlertMessage_WhenDecimalAfterOperator_ThenResultSouldBeAlert() {
         calculator.calculInProgress = "5 + "
         calculator.isDecimal()
-        XCTAssertEqual(calculatorDelegateMock.testAlertMessage, "Syntax error, you need to correct the operation")
+        XCTAssertEqual(calculatorDelegateMock.testAlertMessage, Calculator.ErrorCase.syntax.message)
     }
     
     // Alert Adding Decimal After Result
     func testGivenAlertMessage_WhenDecimalBeforeEqual_ThenResultSouldBeAlert() {
         calculator.calculInProgress = "5 + 3."
         calculator.makeOperation()
-        XCTAssertEqual(calculatorDelegateMock.testAlertMessage, "Syntax error, you need to correct the operation")
+        XCTAssertEqual(calculatorDelegateMock.testAlertMessage, Calculator.ErrorCase.syntax.message)
     }
     
     // Alert Adding Number After Result
@@ -202,8 +200,7 @@ final class CalculatorTests: XCTestCase {
         calculator.calculInProgress = "5 + 6"
         calculator.makeOperation()
         calculator.appendSelectedNumber("3")
-        XCTAssertEqual(calculatorDelegateMock.testAlertMessage,
-                       "This operation have a result. Press K to Keep last result or AC to clear")
+        XCTAssertEqual(calculatorDelegateMock.testAlertMessage, Calculator.ErrorCase.operationHaveResult.message)
     }
     
     // Alert Keep Result
@@ -213,13 +210,13 @@ final class CalculatorTests: XCTestCase {
         calculator.keepResult()
         calculator.calculInProgress = "4"
         calculator.keepResult()
-        XCTAssertEqual(calculatorDelegateMock.testAlertMessage, "Nothing to keep")
+        XCTAssertEqual(calculatorDelegateMock.testAlertMessage, Calculator.ErrorCase.keeping.message)
     }
     
     // Alert Unknow Operand
     func testGivenAlertMessage_WhenUnknowOperand_ThenResultSouldBeAlertMessage() {
         calculator.calculInProgress = "5"
         calculator.appendOperand("E")
-        XCTAssertEqual(calculatorDelegateMock.testAlertMessage, "This operation is impossible")
+        XCTAssertEqual(calculatorDelegateMock.testAlertMessage, Calculator.ErrorCase.operationImpossible.message)
     }
 }

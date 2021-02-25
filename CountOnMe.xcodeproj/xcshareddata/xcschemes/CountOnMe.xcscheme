@@ -38,6 +38,11 @@
                BlueprintName = "CountOnMeTests"
                ReferencedContainer = "container:CountOnMe.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "SimpleCalcTests">
+               </Test>
+            </SkippedTests>
          </TestableReference>
          <TestableReference
             skipped = "NO">
