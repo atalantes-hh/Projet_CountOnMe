@@ -17,7 +17,7 @@ final class ViewController: UIViewController {
     
     // MARK: - Private Property
     
-    private var calculator = Calculator()
+    private let calculator = Calculator()
     
     // MARK: - View Life cycles
     

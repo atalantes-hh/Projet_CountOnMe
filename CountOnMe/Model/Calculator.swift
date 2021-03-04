@@ -229,6 +229,7 @@ final class Calculator {
         let format = NumberFormatter()
         format.minimumFractionDigits = 0
         format.maximumFractionDigits = 5
+        format.decimalSeparator = "."
         guard let value = format.string(from: NSNumber(value: number)) else { return ""}
         return value
     }

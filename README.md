@@ -11,3 +11,11 @@ Some functions are missing, the application is prone to crash, both because of t
 The application does not respect the MVC pattern.
 
 The goal is to finalize the application for the final customer.
+
+### Available for
+iOS 11.0 and Later
+
+### Made for
+OpenClassrooms Project 5
+
+[![forthebadge](https://forthebadge.com/images/badges/made-with-swift.svg)](https://forthebadge.com)
